@@ -22,18 +22,32 @@ davisdata <- read.csv(file="UCDavis.csv")
 ```{r}
 basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
+
 ## Now add in boxplot
 
 ```{r}
 basicCN + geom_boxplot()
 ```
-  
-  
-### get fancy  
 
+```{r}
+boxplot(alcohol~Seat,data=davisdata)
+```
+
+It appears that those seated in the back have higher variability as opposed to the middle and front. Over 75% of those seated in the back drink more than those seated in the middle or front. Therefore, may reject the null hypothesis.
+
+### get fancy  
+```{r}
+basicCN <- ggplot(davisdata,aes(x=Seat,y=alcohol))
+
+basicCN + geom_boxplot()
+```
 ```{r}
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
+
+It appears that there are more people seated in the back than the front, making seem as though those sitting in the back are drinking more.
+
+The red dots are the outliers. They're the rare few that fall outside the average. 
 
 ## Numerical Summarys 
 
