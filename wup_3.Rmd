@@ -16,6 +16,8 @@ davisdata <- read.csv(file="UCDavis.csv")
 ```
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
+### Plot boxplots
+
 
 ## Now with ggplot - first select the basic data
 
@@ -50,9 +52,19 @@ It appears that there are more people seated in the back than the front, making 
 The red dots are the outliers. They're the rare few that fall outside the average. 
 
 ## Numerical Summarys 
+```{r}
+favstats(alcohol~Seat,data=ucdavis1)
+```
+
+The back row is significantly higher mean than the mean of the front and middle row.
 
 ## Inferential Tests
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+The f-value is greater than 0.00000009. Therefore, I concur that the  hypothesis is correct. Because the back row is more dense, we know the possibility of a drinker being present is higher.
 
 ## Conclusions
 
-
+The data above shows that there is a correlation between drinking habits and their seating patterns. 
